@@ -196,16 +196,12 @@ namespace NCubic {
         }
         
         vector<vector<int>> intersect(n, vector<int>(n));
-        for (int len = 1; len <= n; ++len) {
-            for (int left = 0; left + len <= n; ++left) {
-                int right = left + len - 1;
-                if (len == 1) {
-                    intersect[left][right] = include[left][right];
-                } else {
-                    intersect[left][right] += intersect[left + 1][right];
-                    intersect[left][right] += include[left][left];
-                    intersect[left][right] -= include[left][left + 1];
-                }
+        for (int left = 0; left < n; ++left) {
+            intersect[left][left] = include[left][left];
+            for (int right = left + 1; right < n; ++right) {
+                // add doesn't depend on left, only on right
+                int add = include[right][right] - include[right - 1][right];
+                intersect[left][right] = intersect[left][right - 1] + add;
             }
         }
         
