@@ -1,0 +1,124 @@
+\documentclass[14pt]{extarticle}
+
+\usepackage[russian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[
+	left 	= 	30	mm,
+	right 	=	15	mm,
+	top 	=	20	mm,
+	bottom 	=	20	mm,
+]{geometry}
+
+\setlength{\parindent}{1.25 cm}
+
+\usepackage[toc,page]{appendix}
+
+\renewcommand{\baselinestretch}{1.5}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+  {\normalfont\fontsize{14}{14}\bfseries}{\thesection}{1em}{}
+
+\titleformat{\subsection}
+  {\normalfont\fontsize{14}{14}\bfseries}{\thesubsection}{1em}{}
+
+\usepackage[intoc]{nomencl}
+\renewcommand{\nomname}{Обозначения и сокращения}
+\makenomenclature
+	
+%%% Математика
+
+% Шрифты для математики
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{upgreek}
+\usepackage{xfrac}
+
+
+%%% Иллюстрации
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\usepackage[export]{adjustbox}
+%\graphicspath{{./img/}}
+				
+%Подписи
+\usepackage		[margin		= 10	pt,
+%					font		= footnotesize, 
+					labelfont	= bf, 
+					labelsep	= endash, 
+					labelfont	= bf,
+%					textfont	= sl,
+					margin		= 0 	pt,  
+					aboveskip 	= 4		pt, 
+					belowskip 	= -6	pt,
+					figurename= Рисунок] {caption}
+\usepackage		[margin		= 10	pt,
+					font		= footnotesize, 
+					labelfont	= bf, 
+					labelsep	= endash, 
+					labelfont	= bf,
+					textfont	= sl,
+					margin		= 0 	pt,  
+					aboveskip 	= 4		pt, 
+					belowskip 	= 6	pt]	{subcaption}
+
+%%% Insert pdf pages
+\usepackage[final]{pdfpages}
+
+
+%%% Color highlight
+\usepackage{xcolor}
+
+
+\begin{document}
+%	\includepdf[pages=-]{titlesheet.pdf}
+	
+	\setcounter{page}{2}
+	% Аннотация
+	\begin{abstract}
+		\input{abstract.tex}
+	\end{abstract}
+	\newpage
+	
+	% Содержание
+	\tableofcontents
+	\newpage
+	
+	\section*{Введение}
+	\addcontentsline{toc}{section}{Введение}
+	\input{introduction.tex}
+    \newpage
+    
+    \section*{Обзор смежной задачи}
+    \addcontentsline{toc}{section}{Обзор смежной задачи}
+    \input{related_overview.tex}
+    \newpage
+    
+    \section*{Точное решение за $O(n^3+S)$ времени}
+    \addcontentsline{toc}{section}{Точное решение за $O(n^3+S)$ времени}
+    \input{exact_solution.tex}
+    \newpage
+    
+    \section*{Асимптотически оптимальное приближенное решение}
+    \addcontentsline{toc}{section}{Асимптотически оптимальное приближенное решение}
+    \input{approximate_solution.tex}  %% TODO !!!
+    \newpage
+
+
+
+	\section*{Заключение}
+	\addcontentsline{toc}{section}{Заключение}
+	\input{conclusion.tex}
+	\newpage
+	
+	\input{bibliography.tex}
+\end{document}
